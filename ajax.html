@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajex</title>
+</head>
+
+<body>
+    <p id="demo">Here We load data.</p>
+    <button onclick="loadData()">Click</button>
+
+
+    <script>
+        const loadData = () => {
+            let data = new XMLHttpRequest();
+            data.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    let gotData = this.responseText
+                    document.getElementById("demo").innerHTML = gotData
+                }
+            }
+
+            data.open('GET', "./readme.txt", true);
+            data.send();
+        }
+
+    </script>
+</body>
+
+</html>
